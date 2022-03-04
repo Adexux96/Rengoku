@@ -1,9 +1,11 @@
 const Discord = require('discord.js')
 const Prefix = require('../Modelos/Prefix');
+const Bloquser = require('../Modelos/Bloquser');
 module.exports = async (client, msg) => {
 
     if(!msg.guild) return;
         let ExistsPrefix = await Prefix.findOne({ guildId: msg.guild.id });
+	const Bloquser = await Bloquser.findOne({ userId: msg.author.id });
         if(!ExistsPrefix) {
             prefix = "r?"
         } else {
